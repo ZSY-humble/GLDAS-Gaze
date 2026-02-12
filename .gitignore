@@ -12,3 +12,9 @@ __pycache__/
 # 系统
 .DS_Store
 Thumbs.db
+
+# 大文件（超过 GitHub 100MB 限制，请本地保留或另存网盘/Release）
+pretrained_models/
+dataset/
+assets/
+scanpath_step_overlays/

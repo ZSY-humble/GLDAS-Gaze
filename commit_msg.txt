@@ -1,0 +1,1 @@
+Remove large files: pretrained_models dataset assets (exceed GitHub 100MB limit), add to gitignore
