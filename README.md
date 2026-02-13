@@ -58,32 +58,47 @@ cd ../../..
 
 ## Data Preparation
 
-### COCO-Search18
+### 1. Dataset (COCO-Search18)
 
-1. Obtain [COCO-Search18](https://github.com/cvlab-stonybrook/COCO-Search18) and place the dataset under a root directory, e.g. `dataset/`.
-2. Expected structure under `dataset_root`:
+**Download from Google Drive (recommended):** [dataset](https://drive.google.com/drive/folders/158FUAAiwMwEbSOULvLGn7SIyTirU8Eg6?usp=sharing)
 
-   - `coco_search_fixations_512x320_on_target_allvalid.json` — scanpath annotations
-   - `bbox_annos.npy` — bounding box annotations
-   - `semantic_seq_full/` — semantic / segmentation data (if used)
-   - Other files as required by `common/dataset.py` and `gldas_gaze/builder.py`
+Expected layout under `--dataset-root`:
 
-3. Set `--dataset-root` to this path in all commands below.
+```
+dataset_root/
+├── images/
+├── imagesTA/
+├── semantic_seq_full/
+├── coco_search_fixations_512x320_on_target_allvalid.json
+├── coco_freeview_fixations_512x320.json
+├── bbox_annos.npy
+├── clusters.npy
+├── all_task_ids.npy
+└── scene_label_dict.npy
+```
 
-### Pretrained backbone and pixel decoder
+Alternatively, obtain data from the official [COCO-Search18](https://github.com/cvlab-stonybrook/COCO-Search18) and arrange it as above. Pass the dataset root via `--dataset-root` in training and evaluation.
 
-- Place ResNet-50 backbone weights and MSDeformAttn pixel decoder weights in a directory (e.g. `pretrained_models/`).
-- **Backbone**: e.g. `M2F_R50.pkl` (Mask2Former-style ResNet-50).
-- **Pixel decoder**: e.g. `M2F_R50_MSDeformAttnPixelDecoder.pkl`.
+### 2. Pretrained models (backbone & pixel decoder)
 
-Edit `configs/resnet50.yaml` and set `WEIGHTS` to the path of your backbone file, e.g.:
+**Download from Google Drive:** [pretrained_models](https://drive.google.com/drive/folders/13VYpirKeGfPPlCfmI3z_y3VCnf1UtT49?usp=sharing)
+
+Expected layout (e.g. under project root):
+
+```
+pretrained_models/
+├── M2F_R50.pkl
+└── M2F_R50_MSDeformAttnPixelDecoder.pkl
+```
+
+If you use `pretrained_models/` in the project root, set in `configs/resnet50.yaml`:
 
 ```yaml
 MODEL:
   WEIGHTS: "pretrained_models/M2F_R50.pkl"
 ```
 
-The builder loads the pixel decoder from the same directory (see `gldas_gaze/builder.py`). If your paths differ, adjust the paths in the config or builder accordingly.
+The pixel decoder is loaded from the same directory (see `gldas_gaze/builder.py`). Adjust paths in the config or builder if you use a different location.
 
 ---
 
