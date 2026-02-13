@@ -88,8 +88,13 @@ Expected layout (e.g. under project root):
 ```
 pretrained_models/
 ├── M2F_R50.pkl
-└── M2F_R50_MSDeformAttnPixelDecoder.pkl
+├── M2F_R50_MSDeformAttnPixelDecoder.pkl
+├── TP.pt          # Trained GLDAS-Gaze checkpoint (Target-Present)
+└── TA.pt          # Trained GLDAS-Gaze checkpoint (Target-Absent)
 ```
+
+- `M2F_R50.pkl` and `M2F_R50_MSDeformAttnPixelDecoder.pkl` are used for the backbone and pixel decoder when training or evaluating.
+- `TP.pt` and `TA.pt` are our pre-trained model weights; use them with `--ckpt pretrained_models/TP.pt` or `--ckpt pretrained_models/TA.pt` for evaluation without training.
 
 If you use `pretrained_models/` in the project root, set in `configs/resnet50.yaml`:
 
