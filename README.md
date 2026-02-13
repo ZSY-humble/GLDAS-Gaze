@@ -1,14 +1,13 @@
 # GLDAS-Gaze
 
-**GLDAS-Gaze: Global-Local Dynamic Adaptive Synergy for Task-Driven Scanpath Prediction**
-
-Official implementation of the paper. Authors: **Shangyu Zhou**, **Dongbo Zhang**, **Jianwu Fang**, and **Yaonan Wang**.
+GLDAS-Gaze: Global-Local Dynamic Adaptive Synergy for Task-Driven Scanpath Prediction
+Authors: Shangyu Zhou, Dongbo Zhang, Jianwu Fang, and Yaonan Wang.
 
 ---
 
 ## Abstract
 
-This repository provides the code for training and evaluating the GLDAS-Gaze model for task-driven scanpath prediction. The model uses a dual-stream (dorsal/ventral) architecture with cross-stream interaction and supports both **Target-Present (TP)** and **Target-Absent (TA)** evaluation on COCO-Search18.
+This repository provides the code for training and evaluating the GLDAS-Gaze model for task-driven scanpath prediction. The model uses a dual-stream (dorsal/ventral) architecture with cross-stream interaction and supports both Target-Present (TP) and Target-Absent (TA) evaluation on COCO-Search18.
 
 ---
 
@@ -142,8 +141,8 @@ python test_eval.py \
 
 ## Configuration
 
-- **TP**: `configs/coco_search18_dense_SSL_TP.json` — `cross_stream_scale`: 0.20, `max_traj_length`: 6.
-- **TA**: `configs/coco_search18_dense_SSL_TA.json` — `cross_stream_scale`: 0.35, `max_traj_length`: 10.
+- TP: `configs/coco_search18_dense_SSL_TP.json` 
+- TA: `configs/coco_search18_dense_SSL_TA.json` 
 
 Backbone and data paths are set in `configs/resnet50.yaml` and the JSON configs.
 
